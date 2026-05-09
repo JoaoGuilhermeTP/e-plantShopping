@@ -20,11 +20,18 @@ export const CartSlice = createSlice({
       const item = action.payload;
       state.items = state.items.filter((i) => i.name !== item.name);
     },
+    increaseQuantity: (state, action) => {
+      const item = action.payload;
+      const itemToIncrease = state.items.find((i) => i.name === item.name);
+      if (itemToIncrease) {
+        itemToIncrease.quantity += 1;
+      }
+    },
     updateQuantity: (state, action) => {
       const item = action.payload;
       const itemToUpdate = state.items.find((i) => i.name === item.name);
       if (itemToUpdate) {
-        itemToUpdate.quantity = item.quantity;
+        itemToUpdate.quantity += 1;
       }
     
     },
